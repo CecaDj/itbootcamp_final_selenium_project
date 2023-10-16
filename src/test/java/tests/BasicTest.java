@@ -20,7 +20,9 @@ import pages.SignupPage;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
 public abstract class BasicTest {
     protected WebDriver driver;
@@ -63,7 +65,12 @@ public abstract class BasicTest {
         if (result.getStatus() == ITestResult.FAILURE) {
 
             File f=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-            Files.copy(f,new File("screenshots/" + result.getName() + ".jpg"));
+
+            Date date = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh-mm-ss");
+            String strDate = formatter.format(date);
+
+            Files.copy(f,new File("screenshots/" + result.getName() + strDate + ".jpg"));
         }
     }
 
