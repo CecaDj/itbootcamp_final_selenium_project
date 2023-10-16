@@ -21,6 +21,17 @@ public class LoginTests extends BasicTest{
 
     }
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyInputTypes(){
+        nav.clickOnToolbarLinks(2);
+
+        Assert.assertEquals(login.getEmailInput().getAttribute("type"), "email",
+                "Input type should be email.");
+
+        Assert.assertEquals(login.getPasswordInput().getAttribute("type"), "password",
+                "Input type should be password.");
+    }
+
 
 
 }

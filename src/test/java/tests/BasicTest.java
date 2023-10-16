@@ -12,6 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.LoginPage;
 import pages.NavPage;
 
 
@@ -24,6 +25,7 @@ public abstract class BasicTest {
     protected WebDriverWait wait;
     protected String baseUrl;
     protected NavPage nav;
+    protected LoginPage login;
 
 
     @BeforeClass
@@ -37,6 +39,7 @@ public abstract class BasicTest {
         baseUrl = "https://vue-demo.daniel-avellaneda.com";
 
         nav = new NavPage(driver,wait);
+        login = new LoginPage(driver,wait);
     }
 
     @BeforeMethod
