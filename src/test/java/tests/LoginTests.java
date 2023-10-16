@@ -69,4 +69,19 @@ public class LoginTests extends BasicTest{
 
     }
 
+    @Test (priority = 1, retryAnalyzer = RetryAnalyzer.class)
+    public void verifySuccessfulLogin(){
+
+        nav.clickOnToolbarLinks(2);
+        login.clearAndTypeEmail(email);
+        login.clearAndTypePassword(password);
+        login.clickOnLoginButton();
+
+        wait
+                .withMessage("User should be redirected to Home page.")
+                .until(ExpectedConditions.urlToBe(baseUrl + "/home"));
+
+    }
+
+
 }
