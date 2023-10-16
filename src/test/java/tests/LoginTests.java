@@ -33,5 +33,22 @@ public class LoginTests extends BasicTest{
     }
 
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyErrorIsDisplayedWhenUserDoesNotExist(){
+        String wrongEmail = "non-existing-user@gmal.com";
+        String wrongPassword = "password123";
+
+        nav.clickOnToolbarLinks(2);
+        login.clearAndTypeEmail(wrongEmail);
+        login.clearAndTypePassword(wrongPassword);
+        login.clickOnLoginButton();
+
+        popUp.waitUntilPopUpIsVisible();
+        Assert.assertTrue(popUp.getPopUpText().contains("User does not exists"),
+                "User does not exists error message should be visible.");
+
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login",
+                "User should stay on Login page.");
+    }
 
 }

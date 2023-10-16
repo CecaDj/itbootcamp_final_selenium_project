@@ -13,6 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
+import pages.MessagePopUpPage;
 import pages.NavPage;
 
 
@@ -26,6 +27,7 @@ public abstract class BasicTest {
     protected String baseUrl;
     protected NavPage nav;
     protected LoginPage login;
+    protected MessagePopUpPage popUp;
 
 
     @BeforeClass
@@ -40,6 +42,7 @@ public abstract class BasicTest {
 
         nav = new NavPage(driver,wait);
         login = new LoginPage(driver,wait);
+        popUp = new MessagePopUpPage(driver, wait);
     }
 
     @BeforeMethod
