@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import pages.LoginPage;
 import pages.MessagePopUpPage;
 import pages.NavPage;
+import pages.SignupPage;
 
 
 import java.io.File;
@@ -30,6 +31,7 @@ public abstract class BasicTest {
     protected NavPage nav;
     protected LoginPage login;
     protected MessagePopUpPage popUp;
+    protected SignupPage signup;
 
 
     @BeforeClass
@@ -48,6 +50,7 @@ public abstract class BasicTest {
         nav = new NavPage(driver,wait);
         login = new LoginPage(driver,wait);
         popUp = new MessagePopUpPage(driver, wait);
+        signup = new SignupPage(driver,wait);
     }
 
     @BeforeMethod
