@@ -37,4 +37,12 @@ public class NavPage extends BasicPage{
         getLanguageList().get(index).click();
     }
 
+    public WebElement getLogoutButton(){
+        return driver.findElement(By.className("btnLogout"));
+    }
+
+    public void clickOnLogoutButton(){
+        getLogoutButton().click();
+    }
+
 }

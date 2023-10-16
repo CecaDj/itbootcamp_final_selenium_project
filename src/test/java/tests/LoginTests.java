@@ -83,5 +83,18 @@ public class LoginTests extends BasicTest{
 
     }
 
+    @Test (priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void verifySuccessfulLogout(){
+
+        Assert.assertTrue(nav.getLogoutButton().isDisplayed(), "Logout button should be visible.");
+
+        nav.clickOnLogoutButton();
+
+        wait
+                .withMessage("User should be redirected to Login page.")
+                .until(ExpectedConditions.urlToBe(baseUrl + "/login"));
+
+    }
+
 
 }
