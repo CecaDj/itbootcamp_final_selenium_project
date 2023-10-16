@@ -51,4 +51,22 @@ public class LoginTests extends BasicTest{
                 "User should stay on Login page.");
     }
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyErrorIsDisplayedWhenPasswordIsWrong(){
+        String wrongPassword = "password123";
+
+        nav.clickOnToolbarLinks(2);
+        login.clearAndTypeEmail(email);
+        login.clearAndTypePassword(wrongPassword);
+        login.clickOnLoginButton();
+
+        popUp.waitUntilPopUpIsVisible();
+        Assert.assertTrue(popUp.getPopUpText().contains("Wrong password"),
+                "Wrong password error message should be visible.");
+
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/login",
+                "User should stay on Login page.");
+
+    }
+
 }

@@ -25,6 +25,8 @@ public abstract class BasicTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected String baseUrl;
+    protected String email;
+    protected String password;
     protected NavPage nav;
     protected LoginPage login;
     protected MessagePopUpPage popUp;
@@ -39,6 +41,9 @@ public abstract class BasicTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         baseUrl = "https://vue-demo.daniel-avellaneda.com";
+
+        email = "admin@admin.com";
+        password = "12345";
 
         nav = new NavPage(driver,wait);
         login = new LoginPage(driver,wait);
