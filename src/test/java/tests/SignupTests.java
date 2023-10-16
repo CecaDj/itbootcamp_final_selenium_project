@@ -32,4 +32,28 @@ public class SignupTests extends BasicTest{
 
     }
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyErrorIsDisplayedWhenUserAlreadyExists(){
+        String name = "Another User";
+
+        nav.clickOnToolbarLinks(3);
+
+        wait
+                .withMessage("User should be redirected to Signup page.")
+                .until(ExpectedConditions.urlToBe(baseUrl + "/signup"));
+
+        signup.clearAndTypeName(name);
+        signup.clearAndTypeEmail(email);
+        signup.clearAndTypePassword(password);
+        signup.clearAndTypeConfirmPassword(password);
+        signup.clickOnSignupButton();
+
+        popUp.waitUntilPopUpIsVisible();
+        Assert.assertTrue(popUp.getPopUpText().contains("E-mail already exists"),
+                "E-mail already exists error message should be visible.");
+
+        Assert.assertEquals(driver.getCurrentUrl(), baseUrl + "/signup",
+                "User should stay on Signup page.");
+    }
+
 }

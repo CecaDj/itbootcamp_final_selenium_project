@@ -11,6 +11,10 @@ public class SignupPage extends BasicPage{
         super(driver, wait);
     }
 
+    public WebElement getNameInput(){
+        return driver.findElement(By.id("name"));
+    }
+
     public WebElement getEmailInput(){
         return driver.findElement(By.id("email"));
     }
@@ -21,6 +25,34 @@ public class SignupPage extends BasicPage{
 
     public WebElement getConfirmPasswordInput(){
         return driver.findElement(By.id("confirmPassword"));
+    }
+
+    public void clearAndTypeName(String input){
+        getNameInput().clear();
+        getNameInput().sendKeys(input);
+    }
+
+    public void clearAndTypeEmail(String input){
+        getEmailInput().clear();
+        getEmailInput().sendKeys(input);
+    }
+
+    public void clearAndTypePassword(String input){
+        getPasswordInput().clear();
+        getPasswordInput().sendKeys(input);
+    }
+
+    public void clearAndTypeConfirmPassword(String input){
+        getConfirmPasswordInput().clear();
+        getConfirmPasswordInput().sendKeys(input);
+    }
+
+    public WebElement getSignupButton(){
+        return driver.findElement(By.className("v-btn--is-elevated"));
+    }
+
+    public void clickOnSignupButton(){
+        getSignupButton().click();
     }
 
 
