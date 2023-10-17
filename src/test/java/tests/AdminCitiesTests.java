@@ -51,4 +51,31 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertTrue(popUp.getSavedPopupMessage().getText().contains("Saved successfully"),
                 "New city should be created.");
     }
+
+    @Test
+    public void verifyIfEditCityIsWorking(){
+        String oldCity = "New Orleans";
+        String newCity = "London";
+
+
+        nav.clickOnAdminButton();
+        nav.clickOnCitiesButton();
+
+        cities.clearAndTypeSearch(oldCity);
+
+        cities.waitRowNumber(1);
+        cities.clickOnEditButton(1);
+
+        cities.waitUntilNewEditDialogIsVisible();
+
+        cities.clearAndTypeNewCity(newCity);
+        cities.clickOnSaveButton();
+
+        popUp.waitUntilSavedPopupIsVisible();
+
+        Assert.assertTrue(popUp.getSavedPopupMessage().getText().contains("Saved successfully"),
+                "City should be edited.");
+
+
+    }
 }
