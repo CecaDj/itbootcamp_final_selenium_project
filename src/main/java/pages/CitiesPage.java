@@ -54,4 +54,8 @@ public class CitiesPage extends BasicPage{
         driver.findElement(By.cssSelector("tr:nth-child(" + row + ") #edit")).click();
     }
 
+    public WebElement getTableElement(int row, int column){
+        return driver.findElement(By.cssSelector("tr:nth-child(" + row + " ) td:nth-child(" + column + ")"));
+    }
+
 }

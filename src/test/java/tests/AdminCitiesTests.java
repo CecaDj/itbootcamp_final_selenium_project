@@ -35,7 +35,7 @@ public class AdminCitiesTests extends BasicTest{
 
     }
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 0, retryAnalyzer = RetryAnalyzer.class)
     public void verifyIfCreateNewCityIsWorking(){
         String city = "New Orleans";
 
@@ -52,7 +52,7 @@ public class AdminCitiesTests extends BasicTest{
                 "New city should be created.");
     }
 
-    @Test
+    @Test (priority = 1)
     public void verifyIfEditCityIsWorking(){
         String oldCity = "New Orleans";
         String newCity = "London";
@@ -78,4 +78,21 @@ public class AdminCitiesTests extends BasicTest{
 
 
     }
+
+    @Test(priority = 2, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyIfSearchCityIsWorking(){
+        String editedCity = "London";
+
+        nav.clickOnAdminButton();
+        nav.clickOnCitiesButton();
+
+        cities.clearAndTypeSearch(editedCity);
+        cities.waitRowNumber(1);
+
+        Assert.assertEquals(cities.getTableElement(1,2).getText(), editedCity,
+                "Edited city name should be in table.");
+    }
+
+
+
 }
