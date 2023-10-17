@@ -93,6 +93,31 @@ public class AdminCitiesTests extends BasicTest{
                 "Edited city name should be in table.");
     }
 
+    @Test (priority = 3, retryAnalyzer = RetryAnalyzer.class)
+    public void verifyIfDeleteCityIsWorking(){
+        String editedCity = "London";
+
+        nav.clickOnAdminButton();
+        nav.clickOnCitiesButton();
+
+        cities.clearAndTypeSearch(editedCity);
+        cities.waitRowNumber(1);
+
+        Assert.assertEquals(cities.getTableElement(1,2).getText(), editedCity,
+                "Edited city name should be in table.");
+
+        cities.clickOnDeleteButton(1);
+        cities.waitUntilDeleteDialogIsVisible();
+        cities.confirmDelete();
+
+        popUp.waitUntilSavedPopupIsVisible();
+
+        Assert.assertTrue(popUp.getSavedPopupMessage().getText().contains("Deleted successfully"),
+                "City should be deleted.");
+
+    }
+
+
 
 
 }

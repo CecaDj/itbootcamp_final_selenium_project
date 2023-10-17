@@ -58,4 +58,19 @@ public class CitiesPage extends BasicPage{
         return driver.findElement(By.cssSelector("tr:nth-child(" + row + " ) td:nth-child(" + column + ")"));
     }
 
+    public void clickOnDeleteButton(int row){
+        driver.findElement(By.cssSelector("tr:nth-child(" + row + ") #delete")).click();
+    }
+
+    public void waitUntilDeleteDialogIsVisible(){
+        wait
+                .withMessage("Delete dialog should be visible.")
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".v-dialog--active .v-card")));
+    }
+
+    public void confirmDelete(){
+        driver.findElement(By.cssSelector(".v-card button:nth-child(3)")).click();
+    }
+
+
 }
