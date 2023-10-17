@@ -6,7 +6,7 @@ import retryAnalyzer.RetryAnalyzer;
 
 public class AdminCitiesTests extends BasicTest{
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = - 1, retryAnalyzer = RetryAnalyzer.class)
     public void verifyAdminCitiesPageUrl(){
         nav.clickOnToolbarLinks(2);
 
@@ -19,5 +19,19 @@ public class AdminCitiesTests extends BasicTest{
 
         Assert.assertTrue(driver.getCurrentUrl().contains("/admin/cities"),
                 "User should be redirected to Cities page.");
+    }
+
+    @Test(retryAnalyzer = RetryAnalyzer.class)
+    public void verifyInputTypesForCreateEditNewCity(){
+
+        nav.clickOnAdminButton();
+        nav.clickOnCitiesButton();
+
+        cities.clickOnNewItemButton();
+        cities.waitUntilNewEditDialogIsVisible();
+
+        Assert.assertEquals(cities.getNewItemInput().getAttribute("type"), "text",
+                "Input type should be password.");
+
     }
 }
