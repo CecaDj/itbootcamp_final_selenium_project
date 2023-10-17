@@ -45,4 +45,13 @@ public class NavPage extends BasicPage{
         getLogoutButton().click();
     }
 
+    public void clickOnAdminButton(){
+        driver.findElement(By.className("btnAdmin")).click();
+    }
+
+    public void clickOnCitiesButton(){
+        driver.findElement(By.className("btnAdminCities")).click();
+    }
+
+
 }
