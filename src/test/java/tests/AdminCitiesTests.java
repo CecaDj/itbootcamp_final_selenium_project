@@ -34,4 +34,21 @@ public class AdminCitiesTests extends BasicTest{
                 "Input type should be password.");
 
     }
+
+    @Test(retryAnalyzer = RetryAnalyzer.class)
+    public void verifyIfCreateNewCityIsWorking(){
+        String city = "New Orleans";
+
+        nav.clickOnAdminButton();
+        nav.clickOnCitiesButton();
+
+        cities.clickOnNewItemButton();
+        cities.waitUntilNewEditDialogIsVisible();
+
+        cities.clearAndTypeNewCity(city);
+        cities.clickOnSaveButton();
+        popUp.waitUntilSavedPopupIsVisible();
+        Assert.assertTrue(popUp.getSavedPopupMessage().getText().contains("Saved successfully"),
+                "New city should be created.");
+    }
 }

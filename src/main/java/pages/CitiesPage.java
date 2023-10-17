@@ -24,5 +24,12 @@ public class CitiesPage extends BasicPage{
         return driver.findElement(By.id("name"));
     }
 
+    public void clearAndTypeNewCity(String newCity){
+        getNewItemInput().clear();
+        getNewItemInput().sendKeys(newCity);
+    }
 
+    public void clickOnSaveButton(){
+        driver.findElement(By.className("btnSave")).click();
+    }
 }

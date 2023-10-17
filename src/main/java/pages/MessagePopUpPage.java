@@ -49,4 +49,14 @@ public class MessagePopUpPage extends BasicPage{
         driver.findElement(By.className("btnClose")).click();
     }
 
+    public WebElement getSavedPopupMessage(){
+      return driver.findElement(By.cssSelector("div:nth-child(3) .v-snack__content"));
+    }
+
+    public void waitUntilSavedPopupIsVisible(){
+        wait
+                .withMessage("Popup message should be visible.")
+                .until(ExpectedConditions.visibilityOf(getSavedPopupMessage()));
+    }
+
 }
