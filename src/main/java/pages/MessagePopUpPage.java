@@ -30,4 +30,23 @@ public class MessagePopUpPage extends BasicPage{
         }
         return null;
     }
+
+    public WebElement getDialog(){
+        return driver.findElement(By.cssSelector(".v-dialog--active .v-card"));
+    }
+    public void waitUntilDialogIsVisible(){
+        wait
+                .withMessage("Dialog should be visible.")
+                .until(ExpectedConditions.visibilityOf(getDialog()));
+    }
+
+
+    public String getDialogHeadline(){
+        return getDialog().findElement(By.cssSelector("div.v-card__title")).getText();
+    }
+
+    public void clickOnDialogCloseButton(){
+        driver.findElement(By.className("btnClose")).click();
+    }
+
 }

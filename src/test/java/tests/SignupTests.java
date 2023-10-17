@@ -56,4 +56,32 @@ public class SignupTests extends BasicTest{
                 "User should stay on Signup page.");
     }
 
+    @Test (priority = -1)
+    public void verifySuccessfulSignup() {
+        String name = "John Doe";
+        String emailNew = "johndoe92@gmail.com";
+
+
+        nav.clickOnToolbarLinks(3);
+        signup.clearAndTypeName(name);
+        signup.clearAndTypeEmail(emailNew);
+        signup.clearAndTypePassword(password);
+        signup.clearAndTypeConfirmPassword(password);
+
+        signup.clickOnSignupButton();
+
+
+        popUp.waitUntilDialogIsVisible();
+        Assert.assertTrue(popUp.getDialogHeadline().contains("IMPORTANT: Verify your account"),
+                "Dialog headline should be valid.");
+
+
+        popUp.clickOnDialogCloseButton();
+
+        nav.clickOnLogoutButton();
+
+    }
+
+
+
 }
