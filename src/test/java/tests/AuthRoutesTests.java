@@ -24,4 +24,14 @@ public class AuthRoutesTests extends BasicTest{
 
     }
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyForbiddenVisitsToAdminCitiesUrlIfNotAuthenticated(){
+
+        driver.get(baseUrl + "/admin/cities");
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"),
+                "User should be redirected to Login page.");
+    }
+
+
 }
