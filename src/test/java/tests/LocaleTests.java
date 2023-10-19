@@ -36,6 +36,16 @@ public class LocaleTests extends BasicTest{
                 "Page language should be changed to CN.");
     }
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyIfSetLocaleToFrIsWorking(){
+
+        nav.clickOnLanguageButton();
+        nav.selectLanguage(2);
+
+        Assert.assertTrue(home.getHeader().getText().contains("Page d'atterrissage"),
+                "Page language should be changed to FR.");
+    }
+
 
 
 
