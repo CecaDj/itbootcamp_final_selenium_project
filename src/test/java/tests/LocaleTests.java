@@ -16,6 +16,17 @@ public class LocaleTests extends BasicTest{
                 "Page language should be changed to ES.");
     }
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyIfSetLocaleToEnIsWorking(){
+
+        nav.clickOnLanguageButton();
+        nav.selectLanguage(0);
+
+        Assert.assertTrue(home.getHeader().getText().contains("Landing"),
+                "Page language should be changed to EN.");
+    }
+
+
 
 
 }
