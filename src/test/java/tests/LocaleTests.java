@@ -26,6 +26,17 @@ public class LocaleTests extends BasicTest{
                 "Page language should be changed to EN.");
     }
 
+    @Test (retryAnalyzer = RetryAnalyzer.class)
+    public void verifyIfSetLocaleToCnIsWorking(){
+
+        nav.clickOnLanguageButton();
+        nav.selectLanguage(3);
+
+        Assert.assertTrue(home.getHeader().getText().contains("首页"),
+                "Page language should be changed to CN.");
+    }
+
+
 
 
 
