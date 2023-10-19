@@ -32,6 +32,7 @@ public abstract class BasicTest {
     protected MessagePopUpPage popUp;
     protected SignupPage signup;
     protected CitiesPage cities;
+    protected HomePage home;
 
 
     @BeforeClass
@@ -52,6 +53,7 @@ public abstract class BasicTest {
         popUp = new MessagePopUpPage(driver, wait);
         signup = new SignupPage(driver,wait);
         cities = new CitiesPage(driver,wait);
+        home = new HomePage(driver,wait);
     }
 
     @BeforeMethod
